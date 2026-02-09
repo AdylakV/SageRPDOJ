@@ -1,14 +1,19 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   DOJ SAN ANDREAS - PROFESSIONAL JAVASCRIPT
-   Clean & Elegant Interactions
+   DOJ SAN ANDREAS - ENHANCED JAVASCRIPT
+   Professional Interactions with New Features
    ═══════════════════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Add page load animation class
+    document.body.classList.add('page-loading');
+
     initTheme();
     initNavigation();
     initScrollEffects();
+    initScrollProgress();
     initSearch();
     initAnimations();
+    initMobileTOC();
 });
 
 /* ═══════════════ THEME TOGGLE ═══════════════ */
@@ -96,6 +101,21 @@ function initScrollEffects() {
     });
 }
 
+/* ═══════════════ SCROLL PROGRESS ═══════════════ */
+function initScrollProgress() {
+    // Create scroll progress element
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.prepend(progressBar);
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = `${Math.min(scrollPercent, 100)}%`;
+    }, { passive: true });
+}
+
 /* ═══════════════ SEARCH FUNCTIONALITY ═══════════════ */
 function initSearch() {
     const searchInput = document.getElementById('docs-search');
@@ -108,7 +128,15 @@ function initSearch() {
         articles.forEach(article => {
             const text = article.textContent.toLowerCase();
             const match = query === '' || text.includes(query);
+
             article.style.display = match ? 'block' : 'none';
+
+            // Add highlight class for matching articles
+            if (match && query !== '') {
+                article.classList.add('search-match');
+            } else {
+                article.classList.remove('search-match');
+            }
         });
 
         // Show/hide sections based on visible articles
@@ -138,6 +166,65 @@ function initAnimations() {
     // Observe all fade-in elements
     document.querySelectorAll('.fade-in').forEach(el => {
         observer.observe(el);
+    });
+}
+
+/* ═══════════════ MOBILE TOC ═══════════════ */
+function initMobileTOC() {
+    const sidebar = document.querySelector('.sidebar');
+    if (!sidebar) return;
+
+    // Create mobile TOC button
+    const tocBtn = document.createElement('button');
+    tocBtn.className = 'mobile-toc-btn';
+    tocBtn.innerHTML = '📑';
+    tocBtn.setAttribute('aria-label', 'Otwórz spis treści');
+    document.body.appendChild(tocBtn);
+
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+
+    // Clone sidebar for overlay
+    const sidebarClone = sidebar.cloneNode(true);
+
+    // Add close button
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'sidebar-close';
+    closeBtn.innerHTML = '✕';
+    closeBtn.setAttribute('aria-label', 'Zamknij spis treści');
+    sidebarClone.prepend(closeBtn);
+
+    overlay.appendChild(sidebarClone);
+    document.body.appendChild(overlay);
+
+    // Open overlay
+    tocBtn.addEventListener('click', () => {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close overlay
+    const closeOverlay = () => {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    closeBtn.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeOverlay();
+    });
+
+    // Close on link click
+    sidebarClone.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeOverlay);
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) {
+            closeOverlay();
+        }
     });
 }
 

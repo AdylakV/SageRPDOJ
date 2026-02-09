@@ -1,0 +1,19 @@
+{
+    "name": "DOJ San Andreas",
+    "short_name": "DOJ SA",
+    "description": "Oficjalna dokumentacja prawna Departamentu Sprawiedliwości Stanu San Andreas",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a1628",
+    "theme_color": "#0a1628",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "assets/icons/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["government", "legal", "documentation"]
+}

@@ -979,3 +979,294 @@ section {
     background: var(--gold-500);
     color: var(--navy-950);
 }
+
+/* ═══════════════ BREADCRUMBS ═══════════════ */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.breadcrumbs a {
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+    color: var(--gold-500);
+}
+
+.breadcrumbs span {
+    color: var(--gold-500);
+}
+
+.breadcrumbs svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+}
+
+/* ═══════════════ MOBILE TOC BUTTON ═══════════════ */
+.mobile-toc-btn {
+    display: none;
+    position: fixed;
+    bottom: 5rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: 50%;
+    font-size: 1.25rem;
+    cursor: pointer;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.mobile-toc-btn:hover {
+    background: rgba(212, 175, 55, 0.15);
+    transform: scale(1.1);
+}
+
+@media (max-width: 1024px) {
+    .mobile-toc-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Mobile Sidebar Overlay */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 22, 40, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1001;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.sidebar-overlay .sidebar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 80vh;
+    width: 320px;
+}
+
+.sidebar-overlay .sidebar-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+/* ═══════════════ SEARCH HIGHLIGHT ═══════════════ */
+.search-highlight {
+    background: rgba(212, 175, 55, 0.3);
+    padding: 0.1em 0.2em;
+    border-radius: 3px;
+}
+
+.article-block.search-match {
+    border-color: var(--gold-500);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+/* ═══════════════ PAGE LOAD ANIMATION ═══════════════ */
+.page-loading {
+    opacity: 0;
+    animation: pageLoad 0.6s ease forwards;
+}
+
+@keyframes pageLoad {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ═══════════════ SCROLL PROGRESS ═══════════════ */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-400), var(--gold-600));
+    z-index: 1001;
+    transition: width 0.1s ease;
+}
+
+/* ═══════════════ PRINT STYLES ═══════════════ */
+@media print {
+
+    /* Reset colors for printing */
+    :root {
+        --text-primary: #000000;
+        --text-secondary: #333333;
+        --text-muted: #666666;
+        --bg-primary: #ffffff;
+        --bg-secondary: #ffffff;
+        --bg-card: #ffffff;
+    }
+
+    /* Hide non-essential elements */
+    .navbar,
+    .mobile-nav,
+    .mobile-toggle,
+    .theme-toggle,
+    .back-to-top,
+    .mobile-toc-btn,
+    .sidebar-overlay,
+    .scroll-progress,
+    .hero-orb,
+    .card-glow,
+    .search-box,
+    footer {
+        display: none !important;
+    }
+
+    /* Reset backgrounds and effects */
+    body::before {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    /* Layout adjustments */
+    .docs-layout {
+        display: block;
+        padding-top: 0;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .docs-content {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    /* Typography for print */
+    h1,
+    h2,
+    h3 {
+        color: black;
+        -webkit-text-fill-color: black;
+        background: none;
+        page-break-after: avoid;
+    }
+
+    .docs-content>h1 {
+        font-size: 24pt;
+        border-bottom: 2px solid #d4af37;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 18pt;
+        color: #1a3a5c;
+        border-bottom: 1px solid #d4af37;
+        padding-bottom: 0.25rem;
+        margin-top: 2rem;
+    }
+
+    /* Article blocks */
+    .article-block {
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        page-break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+
+    .article-header {
+        background: #f5f5f5;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .article-number {
+        background: #e8e8e8;
+        color: #1a3a5c;
+    }
+
+    .sub-article {
+        background: #fafafa;
+        border-left-color: #d4af37;
+    }
+
+    /* Links */
+    a {
+        color: #1a3a5c;
+        text-decoration: underline;
+    }
+
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+
+    /* Page breaks */
+    section {
+        page-break-before: auto;
+    }
+
+    h2 {
+        page-break-before: always;
+    }
+
+    h2:first-of-type {
+        page-break-before: avoid;
+    }
+
+    /* Header for printed pages */
+    @page {
+        margin: 2cm;
+
+        @top-center {
+            content: "DOJ San Andreas - Dokumentacja Prawna";
+        }
+
+        @bottom-center {
+            content: counter(page);
+        }
+    }
+}
