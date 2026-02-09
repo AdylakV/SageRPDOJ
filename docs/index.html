@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOJ San Andreas - Departament Sprawiedliwości</title>
+    
+    <!-- SEO & Open Graph -->
+    <meta name="description" content="Oficjalna dokumentacja prawna Departamentu Sprawiedliwości Stanu San Andreas. Kodeks Karny, Prawo Stanowe i więcej.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="DOJ San Andreas - Departament Sprawiedliwości">
+    <meta property="og:description" content="Oficjalna dokumentacja prawna Departamentu Sprawiedliwości Stanu San Andreas.">
+    <meta property="og:image" content="assets/images/og-image.png">
+    <meta name="theme-color" content="#1e3a5f">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <svg width="44" height="44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" rx="20" fill="url(#logo-gradient)"/>
+                    <path d="M50 15L65 25V45L50 55L35 45V25L50 15Z" fill="#d4af37"/>
+                    <path d="M50 55L65 65V85L50 95L35 85V65L50 55Z" fill="#d4af37" opacity="0.7"/>
+                    <rect x="45" y="40" width="10" height="30" fill="#d4af37"/>
+                    <circle cx="50" cy="35" r="8" fill="#1e3a5f"/>
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0" y1="0" x2="100" y2="100">
+                            <stop offset="0%" stop-color="#1e3a5f"/>
+                            <stop offset="100%" stop-color="#2d4a6f"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span>DOJ San Andreas</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Strona Główna</a></li>
+                <li><a href="kodeks-karny.html">Kodeks Karny</a></li>
+                <li><a href="prawo-stanowe.html">Prawo Stanowe</a></li>
+                <li><a href="https://discord.gg/YR9scTCRfB" target="_blank">Discord</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Zmień motyw">🌙</button>
+                <a href="kodeks-karny.html" class="btn btn-primary">Przeglądaj Prawo</a>
+            </div>
+            <button class="mobile-toggle" aria-label="Menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="index.html" class="active">Strona Główna</a></li>
+            <li><a href="kodeks-karny.html">Kodeks Karny</a></li>
+            <li><a href="prawo-stanowe.html">Prawo Stanowe</a></li>
+            <li><a href="https://discord.gg/YR9scTCRfB" target="_blank">Discord</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-badge animate-in">
+                ⚖️ Oficjalna Dokumentacja Prawna
+            </div>
+            <h1 class="animate-in delay-1">
+                Departament<br>
+                <span class="gradient-text">Sprawiedliwości</span>
+            </h1>
+            <p class="hero-subtitle animate-in delay-2">
+                Kompletna dokumentacja prawna Stanu San Andreas. Kodeks Karny, Prawo Stanowe 
+                i wszystkie przepisy potrzebne obywatelom i funkcjonariuszom.
+            </p>
+            <div class="hero-cta animate-in delay-3">
+                <a href="kodeks-karny.html" class="btn btn-primary btn-lg">
+                    📜 Kodeks Karny
+                </a>
+                <a href="prawo-stanowe.html" class="btn btn-secondary btn-lg">
+                    📋 Prawo Stanowe
+                </a>
+            </div>
+            <div class="hero-stats animate-in delay-4">
+                <div class="stat">
+                    <span class="stat-number">19</span>
+                    <span class="stat-label">Rozdziałów KK</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Paragrafów</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Rozdziałów PS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section id="dokumenty" class="container">
+        <div class="section-header">
+            <span class="section-badge">Dokumentacja</span>
+            <h2>Akty Prawne</h2>
+            <p>Wybierz dokument prawny, który chcesz przeglądać</p>
+        </div>
+        <div class="cards-grid">
+            <a href="kodeks-karny.html" class="card">
+                <div class="card-icon">⚔️</div>
+                <h3>Kodeks Karny</h3>
+                <p>
+                    Kompletny kodeks karny stanu San Andreas. Zawiera przepisy dotyczące 
+                    przestępstw, wykroczeń, kar i procedur prawnych.
+                </p>
+                <span class="card-link">Przejdź do dokumentu</span>
+            </a>
+            <a href="prawo-stanowe.html" class="card">
+                <div class="card-icon">🏛️</div>
+                <h3>Prawo Stanowe</h3>
+                <p>
+                    Przepisy cywilne i administracyjne stanu San Andreas. Regulacje dotyczące 
+                    służb publicznych, działalności i nieruchomości.
+                </p>
+                <span class="card-link">Przejdź do dokumentu</span>
+            </a>
+            <a href="https://discord.gg/YR9scTCRfB" target="_blank" class="card">
+                <div class="card-icon">💬</div>
+                <h3>Kontakt</h3>
+                <p>
+                    Masz pytania dotyczące prawa? Potrzebujesz pomocy prawnej? 
+                    Dołącz do naszego serwera Discord.
+                </p>
+                <span class="card-link">Dołącz do Discord</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="container">
+        <div class="about-grid">
+            <div class="about-content">
+                <span class="section-badge">O Departamencie</span>
+                <h2>Departament Sprawiedliwości<br>Stanu San Andreas</h2>
+                <p>
+                    Departament Sprawiedliwości (DOJ) jest głównym organem odpowiedzialnym za 
+                    egzekwowanie prawa i sprawowanie wymiaru sprawiedliwości w Stanie San Andreas.
+                </p>
+                <p>
+                    Nasza misja to zapewnienie bezpieczeństwa i porządku publicznego poprzez 
+                    sprawiedliwe stosowanie prawa oraz ochronę praw wszystkich obywateli.
+                </p>
+                <ul class="about-features">
+                    <li>Nadzór nad systemem prawnym i sądownictwem</li>
+                    <li>Współpraca z organami ścigania (LSPD, BCSO, SASP)</li>
+                    <li>Wydawanie licencji i zezwoleń</li>
+                    <li>Rejestracja działalności gospodarczych</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <svg width="100%" height="400" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 20px; background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);">
+                    <!-- Scales of Justice -->
+                    <circle cx="250" cy="120" r="30" fill="#d4af37"/>
+                    <rect x="245" y="150" width="10" height="120" fill="#d4af37"/>
+                    <line x1="150" y1="180" x2="350" y2="180" stroke="#d4af37" stroke-width="8"/>
+                    <!-- Left Scale -->
+                    <line x1="150" y1="180" x2="150" y2="240" stroke="#d4af37" stroke-width="4"/>
+                    <ellipse cx="150" cy="260" rx="50" ry="15" fill="#d4af37" opacity="0.8"/>
+                    <!-- Right Scale -->
+                    <line x1="350" y1="180" x2="350" y2="260" stroke="#d4af37" stroke-width="4"/>
+                    <ellipse cx="350" cy="280" rx="50" ry="15" fill="#d4af37" opacity="0.8"/>
+                    <!-- Base -->
+                    <rect x="200" y="270" width="100" height="20" rx="5" fill="#d4af37"/>
+                    <polygon points="250,290 180,350 320,350" fill="#d4af37" opacity="0.9"/>
+                    <!-- Text -->
+                    <text x="250" y="385" text-anchor="middle" fill="#d4af37" font-family="Inter" font-size="18" font-weight="bold">JUSTITIA</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Potrzebujesz pomocy?</h2>
+        <p>Dołącz do naszego serwera Discord i skontaktuj się z przedstawicielami DOJ</p>
+        <a href="https://discord.gg/YR9scTCRfB" target="_blank" class="btn btn-discord btn-lg">
+            💬 Dołącz do Discord
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="100" rx="20" fill="url(#footer-logo-gradient)"/>
+                        <path d="M50 15L65 25V45L50 55L35 45V25L50 15Z" fill="#d4af37"/>
+                        <path d="M50 55L65 65V85L50 95L35 85V65L50 55Z" fill="#d4af37" opacity="0.7"/>
+                        <rect x="45" y="40" width="10" height="30" fill="#d4af37"/>
+                        <circle cx="50" cy="35" r="8" fill="#1e3a5f"/>
+                        <defs>
+                            <linearGradient id="footer-logo-gradient" x1="0" y1="0" x2="100" y2="100">
+                                <stop offset="0%" stop-color="#1e3a5f"/>
+                                <stop offset="100%" stop-color="#2d4a6f"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <p>
+                        Departament Sprawiedliwości Stanu San Andreas. 
+                        Oficjalna dokumentacja prawna dla obywateli i funkcjonariuszy.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Dokumenty</h4>
+                    <a href="kodeks-karny.html">Kodeks Karny</a>
+                    <a href="prawo-stanowe.html">Prawo Stanowe</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Kontakt</h4>
+                    <a href="https://discord.gg/YR9scTCRfB" target="_blank">Discord</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Department of Justice - San Andreas. Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Powrót na górę">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
