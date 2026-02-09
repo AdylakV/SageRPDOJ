@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   DOJ SAN ANDREAS - IMMERSIVE JAVASCRIPT
-   Premium Effects & Interactions
+   DOJ SAN ANDREAS - PROFESSIONAL JAVASCRIPT
+   Clean & Elegant Interactions
    ═══════════════════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,9 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initScrollEffects();
     initSearch();
-    initParticles();
     initAnimations();
-    initCountUp();
 });
 
 /* ═══════════════ THEME TOGGLE ═══════════════ */
@@ -45,17 +43,12 @@ function initNavigation() {
     const mobileNav = document.querySelector('.mobile-nav');
 
     // Scroll effect for navbar
-    let lastScroll = 0;
     window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-
-        if (currentScroll > 50) {
+        if (window.scrollY > 50) {
             navbar?.classList.add('scrolled');
         } else {
             navbar?.classList.remove('scrolled');
         }
-
-        lastScroll = currentScroll;
     }, { passive: true });
 
     // Mobile toggle
@@ -115,59 +108,16 @@ function initSearch() {
         articles.forEach(article => {
             const text = article.textContent.toLowerCase();
             const match = query === '' || text.includes(query);
-
             article.style.display = match ? 'block' : 'none';
-
-            if (match && query !== '') {
-                article.style.animation = 'none';
-                article.offsetHeight; // Trigger reflow
-                article.style.animation = 'highlight 0.5s ease';
-            }
         });
 
         // Show/hide sections based on visible articles
         document.querySelectorAll('.docs-content section').forEach(section => {
-            const visibleArticles = section.querySelectorAll('.article-block[style="display: block"], .article-block:not([style*="display"])');
-            const hasVisible = Array.from(section.querySelectorAll('.article-block')).some(a => a.style.display !== 'none');
+            const hasVisible = Array.from(section.querySelectorAll('.article-block'))
+                .some(a => a.style.display !== 'none');
             section.style.display = hasVisible || query === '' ? 'block' : 'none';
         });
     });
-}
-
-/* ═══════════════ PARTICLE SYSTEM ═══════════════ */
-function initParticles() {
-    const container = document.createElement('div');
-    container.className = 'particles';
-    document.body.appendChild(container);
-
-    const particleCount = 30;
-
-    for (let i = 0; i < particleCount; i++) {
-        createParticle(container, i);
-    }
-}
-
-function createParticle(container, index) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-
-    // Random properties
-    const size = Math.random() * 4 + 2;
-    const left = Math.random() * 100;
-    const delay = Math.random() * 15;
-    const duration = Math.random() * 10 + 10;
-    const opacity = Math.random() * 0.5 + 0.2;
-
-    particle.style.cssText = `
-        width: ${size}px;
-        height: ${size}px;
-        left: ${left}%;
-        animation-delay: ${delay}s;
-        animation-duration: ${duration}s;
-        --particle-opacity: ${opacity};
-    `;
-
-    container.appendChild(particle);
 }
 
 /* ═══════════════ SCROLL ANIMATIONS ═══════════════ */
@@ -186,57 +136,9 @@ function initAnimations() {
     }, observerOptions);
 
     // Observe all fade-in elements
-    document.querySelectorAll('.fade-in, .card, .article-block, .about-feature, .stat-item').forEach(el => {
-        el.classList.add('fade-in');
+    document.querySelectorAll('.fade-in').forEach(el => {
         observer.observe(el);
     });
-}
-
-/* ═══════════════ COUNT UP ANIMATION ═══════════════ */
-function initCountUp() {
-    const stats = document.querySelectorAll('.stat-number');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = entry.target;
-                const value = target.textContent;
-
-                // Check if it's a number
-                const numericValue = parseInt(value.replace(/\D/g, ''));
-                if (!isNaN(numericValue)) {
-                    animateNumber(target, numericValue, value.includes('+'));
-                }
-
-                observer.unobserve(target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    stats.forEach(stat => observer.observe(stat));
-}
-
-function animateNumber(element, target, hasPlus) {
-    const duration = 2000;
-    const start = 0;
-    const startTime = performance.now();
-
-    function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        // Easing function
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(start + (target - start) * easeOut);
-
-        element.textContent = current + (hasPlus ? '+' : '');
-
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        }
-    }
-
-    requestAnimationFrame(update);
 }
 
 /* ═══════════════ SIDEBAR ACTIVE STATE ═══════════════ */
@@ -260,32 +162,3 @@ document.addEventListener('scroll', () => {
         }
     });
 }, { passive: true });
-
-/* ═══════════════ HIGHLIGHT ANIMATION ═══════════════ */
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes highlight {
-        0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-        50% { box-shadow: 0 0 20px 5px rgba(212, 175, 55, 0.2); }
-        100% { box-shadow: none; }
-    }
-    
-    .particle {
-        opacity: var(--particle-opacity, 0.5);
-    }
-`;
-document.head.appendChild(style);
-
-/* ═══════════════ CURSOR GLOW EFFECT ═══════════════ */
-document.addEventListener('mousemove', (e) => {
-    const cards = document.querySelectorAll('.card');
-
-    cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-    });
-});
